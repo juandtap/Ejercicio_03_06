@@ -5,6 +5,9 @@
 
 package ups.ejercicio_03_06;
 
+
+import ups.ejercicio_03_06.View.DrawWindow;
+
 /**
  *
  * @author Diego
@@ -12,6 +15,7 @@ package ups.ejercicio_03_06;
 public class Ejercicio_03_06 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        DrawWindow drawWindow = new DrawWindow();
+        drawWindow.setVisible(true);
     }
 }
