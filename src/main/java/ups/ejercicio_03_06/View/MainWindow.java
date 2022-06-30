@@ -13,12 +13,15 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -27,15 +30,15 @@ import javax.swing.border.TitledBorder;
 /**
  *
  * @author Diego
- * NO TOCAR, NO SIRVE ESTA CLASE
+ * 
  */
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements ActionListener{
     
     private JPanel configPanel;
     private JPanel dimensionPanel;
     private JPanel buttonsPanel;
     private JPanel formColorPanel;
-    private JPanel drawPanel;
+    private DrawPanel drawPanel;
     private ArrayList<JLabel> labelList;
     private JTextField jTextFieldHeight;
     private JTextField jTextFieldWidth;
@@ -52,6 +55,7 @@ public class MainWindow extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
        
         initComponents();
+        jButtonDraw.addActionListener(this);
         
         
     }
@@ -143,5 +147,38 @@ public class MainWindow extends JFrame {
         jButtonClear = new JButton("Limpiar");
         jButtonDraw = new JButton("Dibujar");
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (jButtonDraw == e.getSource()) {
+            getData();
+            getColors();
+            JOptionPane.showMessageDialog(this, "click en la pantalla para dibujar la figura");
+
+        }
+      }
+    private void getData(){ 
+        drawPanel.setHeightFig(Integer.parseInt(jTextFieldHeight.getText()));
+        drawPanel.setWidthFig(Integer.parseInt(jTextFieldWidth.getText()));
+              
+    }
+    private void getColors(){
+        if (jComboBoxColors.getSelectedItem().equals("Amarillo")) {
+            drawPanel.setColor(Color.YELLOW);
+        }
+        if (jComboBoxColors.getSelectedItem().equals("Azul")) {
+            drawPanel.setColor(Color.BLUE);
+        }
+        if (jComboBoxColors.getSelectedItem().equals("Rojo")) {
+            drawPanel.setColor(Color.RED);
+        }
+        if (jComboBoxColors.getSelectedItem().equals("Verde")) {
+            drawPanel.setColor(Color.GREEN);
+        }
+    }
     
-}
+    }
+    
+    
+    
+
