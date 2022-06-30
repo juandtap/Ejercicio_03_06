@@ -4,115 +4,80 @@
  */
 package ups.ejercicio_03_06.View;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
+import ups.ejercicio_03_06.Figure;
 
 
 public class DrawPanel extends JPanel implements MouseListener{
     
-    private final int CIRCLE = 1;
-    private final int STAR = 2;
-    private final int SQUARE = 3;
-    private final int RECTANGLE = 4;
-    private final int TRIANGLE = 5;
+    private final int CIRCLE = 0;
+    private final int STAR = 1;
+    private final int SQUARE = 2;
+    private final int RECTANGLE = 3;
+    private final int TRIANGLE = 4;
     
-    private int figura;
-    private Color color;
-    private int height;
-    private int width;
-    private Point point1 = new Point(10, 10);
-    private Point point2 = new Point(-10, -10);
+    private Figure figura;
+    private Point point;
+   
 
-    public DrawPanel(int figura, Color color, int height, int width) {
+    public DrawPanel(Figure figura) {
         this.figura = figura;
-        this.color = color;
-        this.height = height;
-        this.width = width;
-        
+        point = new Point(-200, -200);
         this.addMouseListener(this);
     }
 
-    
-
-    public void setFigure(int figura, Color color, int height, int width){
-        setHeightFig(height);
-        setWidthFig(width);
-        setColor(color);
-        setFigura(figura);
+    public Figure getFigura() {
+        return figura;
     }
-    
-   
 
     @Override
     public void paint(Graphics g) {
         super.paint(g); 
-        System.out.println("entro al paint");
-        g.setColor(color);
-      
-        g.fillRect(point1.x, point1.y, getWidthFig(),getHeightFig());
+        
+        g.setColor(figura.getColor());
+        switch (figura.getFigura()) {
+            case CIRCLE:
+                g.fillOval(point.x, point.y, figura.getWidth(),figura.getHeight());
+                break;
+            case SQUARE:
+                // usa el mismo valor para ancho y alto, para asegurar que se dibuje un cuadrado
+                g.fillRect(point.x, point.y, figura.getWidth(),figura.getWidth());
+                break;
+            case RECTANGLE:
+                g.fillRect(point.x, point.y, figura.getWidth(),figura.getHeight());
+                break;
+            case TRIANGLE:
+                int[] pointsX = {point.x, (point.x - (figura.getWidth()/2)), point.x + (figura.getWidth()/2)};
+                int[] pointsY = {point.y, (point.x - (figura.getHeight()/2)), (point.y + (figura.getHeight()/2))};
+                g.fillPolygon(pointsX, pointsY, 3);
+                break;
+            default:
+                break;
+        }
+        
+        
         
         
     }
 
-    public int getFigura() {
-        return figura;
+    public Point getPoint() {
+        return point;
     }
 
-    public void setFigura(int figura) {
-        this.figura = figura;
+    public void setPoint(Point point) {
+        this.point = point;
     }
 
     
-    
-    
-    
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public int getHeightFig() {
-        return height;
-    }
-
-    public void setHeightFig(int height) {
-        this.height = height;
-    }
-
-    public int getWidthFig() {
-        return width;
-    }
-
-    public void setWidthFig(int width) {
-        this.width = width;
-    }
-
-    public Point getPoint1() {
-        return point1;
-    }
-
-    public void setPoint1(Point point1) {
-        this.point1 = point1;
-    }
-
-    public Point getPoint2() {
-        return point2;
-    }
-
-    public void setPoint2(Point point2) {
-        this.point2 = point2;
-    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        setPoint1(e.getPoint());
+        setPoint(e.getPoint());
         System.out.println("evento: "+e.getPoint());
         this.repaint();
     }

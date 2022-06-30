@@ -6,7 +6,7 @@
 package ups.ejercicio_03_06;
 
 
-import ups.ejercicio_03_06.View.DrawWindow;
+
 import ups.ejercicio_03_06.View.MainWindow;
 
 /**

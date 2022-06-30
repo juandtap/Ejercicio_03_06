@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import ups.ejercicio_03_06.Figure;
 
 
 /**
@@ -56,6 +57,7 @@ public class MainWindow extends JFrame implements ActionListener{
        
         initComponents();
         jButtonDraw.addActionListener(this);
+        jButtonClear.addActionListener(this);
         
         
     }
@@ -70,7 +72,7 @@ public class MainWindow extends JFrame implements ActionListener{
         dimensionPanel = new JPanel();
         buttonsPanel = new JPanel();
         
-        drawPanel = new DrawPanel(0, Color.RED, 50, 70);
+        drawPanel = new DrawPanel(new Figure(0, Color.YELLOW, 0, 0));
         drawPanel.setBorder(new TitledBorder("Dibujo"));
         
         getContentPane().add(configPanel);
@@ -130,9 +132,9 @@ public class MainWindow extends JFrame implements ActionListener{
         jComboBoxColors = new JComboBox();
         jComboBoxFigure = new JComboBox();
         
+        jComboBoxFigure.addItem("Circulo");
         jComboBoxFigure.addItem("Estrella");
         jComboBoxFigure.addItem("Cuadrado");
-        jComboBoxFigure.addItem("Circulo");
         jComboBoxFigure.addItem("Rectangulo");
         jComboBoxFigure.addItem("Triangulo");
         
@@ -155,25 +157,33 @@ public class MainWindow extends JFrame implements ActionListener{
             getColors();
             JOptionPane.showMessageDialog(this, "click en la pantalla para dibujar la figura");
 
+        } else{
+            
+            drawPanel.getFigura().setHeight(0);
+            drawPanel.getFigura().setWidth(0);
+            drawPanel.repaint();
         }
+        
+        
       }
     private void getData(){ 
-        drawPanel.setHeightFig(Integer.parseInt(jTextFieldHeight.getText()));
-        drawPanel.setWidthFig(Integer.parseInt(jTextFieldWidth.getText()));
+        drawPanel.getFigura().setFigura(jComboBoxFigure.getSelectedIndex());
+        drawPanel.getFigura().setHeight(Integer.parseInt(jTextFieldHeight.getText()));
+        drawPanel.getFigura().setWidth(Integer.parseInt(jTextFieldWidth.getText()));
               
     }
     private void getColors(){
         if (jComboBoxColors.getSelectedItem().equals("Amarillo")) {
-            drawPanel.setColor(Color.YELLOW);
+            drawPanel.getFigura().setColor(Color.YELLOW);
         }
         if (jComboBoxColors.getSelectedItem().equals("Azul")) {
-            drawPanel.setColor(Color.BLUE);
+            drawPanel.getFigura().setColor(Color.BLUE);
         }
         if (jComboBoxColors.getSelectedItem().equals("Rojo")) {
-            drawPanel.setColor(Color.RED);
+            drawPanel.getFigura().setColor(Color.RED);
         }
         if (jComboBoxColors.getSelectedItem().equals("Verde")) {
-            drawPanel.setColor(Color.GREEN);
+            drawPanel.getFigura().setColor(Color.GREEN);
         }
     }
     
