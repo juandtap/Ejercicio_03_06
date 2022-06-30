@@ -5,6 +5,7 @@
 package ups.ejercicio_03_06.View;
 
 import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -16,14 +17,14 @@ public class DrawWindow extends javax.swing.JFrame {
     private Color color;
     private double height;
     private double width;
-   
+    private JPanel drawPanel;
     
     
     public DrawWindow() {
         initComponents();
-        DrawPanel drawPanel = new DrawPanel(2, Color.BLACK, 20, 20);
+        drawPanel = new DrawPanel(2, Color.BLACK, 20, 20);
          //this.add(drawPanel);
-         this.jPanelDrawing.add(drawPanel,-1);
+         this.jPanelDrawing.add(drawPanel);
          
          drawPanel.repaint();
     }
@@ -173,7 +174,7 @@ public class DrawWindow extends javax.swing.JFrame {
 
     private void jButtonDrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDrawActionPerformed
         System.out.println("btont");
-        
+        drawPanel.repaint();
         
     }//GEN-LAST:event_jButtonDrawActionPerformed
     

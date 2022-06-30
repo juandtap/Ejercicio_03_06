@@ -22,11 +22,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
+
 
 /**
  *
  * @author Diego
+ * NO TOCAR, NO SIRVE ESTA CLASE
  */
 public class MainWindow extends JFrame {
     
@@ -60,15 +61,20 @@ public class MainWindow extends JFrame {
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         configPanel = new JPanel();
         configPanel.setBorder(new TitledBorder("Config"));
-        formColorPanel = new JPanel();
         
-       
+        formColorPanel = new JPanel();
         dimensionPanel = new JPanel();
         buttonsPanel = new JPanel();
+        
+        drawPanel = new DrawPanel(0, Color.RED, 50, 70);
+        drawPanel.setBorder(new TitledBorder("Dibujo"));
+        
         getContentPane().add(configPanel);
         configPanel.add(formColorPanel);
         configPanel.add(dimensionPanel);
         configPanel.add(buttonsPanel);
+        
+        getContentPane().add(drawPanel);
         
         initLabels();
         initTextFields();
@@ -134,7 +140,7 @@ public class MainWindow extends JFrame {
     }
     
     private void initButtons(){
-        jButtonClear = new JButton("limpiar");
+        jButtonClear = new JButton("Limpiar");
         jButtonDraw = new JButton("Dibujar");
     }
     

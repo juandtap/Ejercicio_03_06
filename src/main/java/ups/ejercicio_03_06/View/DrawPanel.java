@@ -32,7 +32,8 @@ public class DrawPanel extends JPanel implements MouseListener{
         this.color = color;
         this.height = height;
         this.width = width;
-        System.out.println("se creo el drawpanel");
+        
+        this.addMouseListener(this);
     }
 
     
@@ -52,7 +53,7 @@ public class DrawPanel extends JPanel implements MouseListener{
         System.out.println("entro al paint");
         g.setColor(color);
       
-        g.fillRect(point1.x, point1.y, getHeightFig(), getWidth());
+        g.fillRect(point1.x, point1.y, getWidthFig(),getHeightFig());
         
         
     }
@@ -112,26 +113,24 @@ public class DrawPanel extends JPanel implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         setPoint1(e.getPoint());
+        System.out.println("evento: "+e.getPoint());
+        this.repaint();
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
