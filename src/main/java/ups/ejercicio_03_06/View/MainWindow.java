@@ -5,14 +5,9 @@
 package ups.ejercicio_03_06.View;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.HeadlessException;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -66,14 +61,15 @@ public class MainWindow extends JFrame implements ActionListener{
         
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         configPanel = new JPanel();
-        configPanel.setBorder(new TitledBorder("Config"));
-        
+        configPanel.setBorder(new TitledBorder("Configuracion"));
         formColorPanel = new JPanel();
         dimensionPanel = new JPanel();
         buttonsPanel = new JPanel();
         
         drawPanel = new DrawPanel(new Figure(0, Color.YELLOW, 0, 0));
         drawPanel.setBorder(new TitledBorder("Dibujo"));
+        drawPanel.setPreferredSize(new Dimension(300, 600));
+        drawPanel.setBackground(Color.WHITE);
         
         getContentPane().add(configPanel);
         configPanel.add(formColorPanel);

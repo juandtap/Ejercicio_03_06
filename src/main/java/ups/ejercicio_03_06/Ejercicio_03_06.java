@@ -16,9 +16,7 @@ import ups.ejercicio_03_06.View.MainWindow;
 public class Ejercicio_03_06 {
 
     public static void main(String[] args) {
-       // DrawWindow drawWindow = new DrawWindow();
-        //drawWindow.setVisible(true);
-        
+       
         MainWindow mainWindow = new MainWindow("Ventana Dibujo");
         mainWindow.setVisible(true);
     }

@@ -21,7 +21,7 @@ public class DrawPanel extends JPanel implements MouseListener{
     private final int RECTANGLE = 3;
     private final int TRIANGLE = 4;
     
-    private Figure figura;
+    private final Figure figura;
     private Point point;
    
 
@@ -65,9 +65,9 @@ public class DrawPanel extends JPanel implements MouseListener{
                 int[] pointsX2 = { point.x - figura.getWidth()/2,point.x,point.x + figura.getWidth()/2};
                 int[] pointsY2 = { point.y + figura.getHeight()/3,point.y+ 2*(figura.getHeight()/3),point.y + figura.getHeight()/3 };
                 
-
                 g.fillPolygon(pointsX1,pointsY1, 4);
                 g.fillPolygon(pointsX2, pointsY2,3);
+                
                 break;
             default:
                 break;
