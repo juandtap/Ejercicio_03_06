@@ -124,7 +124,9 @@ public class MainWindow extends JFrame implements ActionListener{
         
         
         jTextFieldHeight = new JTextField(3);
+        jTextFieldHeight.setText("100");
         jTextFieldWidth = new JTextField(3);
+        jTextFieldWidth.setText("100");
     }
     
     private void initComboBox(){

@@ -40,6 +40,7 @@ public class DrawPanel extends JPanel implements MouseListener{
         super.paint(g); 
         
         g.setColor(figura.getColor());
+        
         switch (figura.getFigura()) {
             case CIRCLE:
                 g.fillOval(point.x, point.y, figura.getWidth(),figura.getHeight());
@@ -52,16 +53,28 @@ public class DrawPanel extends JPanel implements MouseListener{
                 g.fillRect(point.x, point.y, figura.getWidth(),figura.getHeight());
                 break;
             case TRIANGLE:
-                int[] pointsX = {point.x, (point.x - (figura.getWidth()/2)), point.x + (figura.getWidth()/2)};
-                int[] pointsY = {point.y, (point.x - (figura.getHeight()/2)), (point.y + (figura.getHeight()/2))};
+                int[] pointsX = {(point.x - (figura.getWidth()/2)), point.x, (point.x + (figura.getWidth()/2))};
+                int[] pointsY = {(point.y + figura.getHeight()),point.y, (point.y + (figura.getHeight()))};
                 g.fillPolygon(pointsX, pointsY, 3);
+                break;
+            case STAR:
+             
+                int[] pointsX1 = { point.x,point.x - figura.getWidth()/2, point.x, point.x + figura.getWidth()/2};
+                int[] pointsY1 = { point.y, point.y + figura.getHeight(), point.y + 2*(figura.getHeight()/3),point.y + figura.getHeight() };
+                
+                int[] pointsX2 = { point.x - figura.getWidth()/2,point.x,point.x + figura.getWidth()/2};
+                int[] pointsY2 = { point.y + figura.getHeight()/3,point.y+ 2*(figura.getHeight()/3),point.y + figura.getHeight()/3 };
+                
+
+                g.fillPolygon(pointsX1,pointsY1, 4);
+                g.fillPolygon(pointsX2, pointsY2,3);
                 break;
             default:
                 break;
         }
         
         
-        
+     
         
     }
 
