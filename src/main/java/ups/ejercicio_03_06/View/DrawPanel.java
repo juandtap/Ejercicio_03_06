@@ -90,13 +90,14 @@ public class DrawPanel extends JPanel implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        setPoint(e.getPoint());
-        System.out.println("evento: "+e.getPoint());
-        this.repaint();
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
+        setPoint(e.getPoint());
+        System.out.println("evento: "+e.getPoint());
+        this.repaint();
     }
 
     @Override
